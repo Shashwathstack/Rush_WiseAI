@@ -10,17 +10,19 @@ import {
   Users, 
   Settings, 
   LogOut,
-  UtensilsCrossed
+  UtensilsCrossed,
+  Activity
 } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import classes from './Layout.module.css';
 
 const adminLinks = [
-  { icon: LayoutDashboard, label: 'Dashboard', link: '/admin' },
+  { icon: LayoutDashboard, label: 'Overview', link: '/admin' },
   { icon: ListOrdered, label: 'Orders', link: '/admin/orders' },
-  { icon: MenuSquare, label: 'Menu Management', link: '/admin/menu' },
-  { icon: Clock, label: 'Pickup Slots', link: '/admin/slots' },
   { icon: LineChart, label: 'Analytics', link: '/admin/analytics' },
+  { icon: MenuSquare, label: 'Menu Management', link: '/admin/menu' },
+  { icon: Clock, label: 'Pickup Slots', link: '/admin/pickup-slots' },
+  { icon: Activity, label: 'DemandPulse', link: '/admin/demand-pulse' },
   { icon: Users, label: 'Staff Management', link: '/admin/staff' },
   { icon: Settings, label: 'Settings', link: '/admin/settings' },
 ];

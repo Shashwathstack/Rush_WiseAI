@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import { Container, Title, TextInput, SimpleGrid, Card, Image, Text, Badge, Button, Group, ActionIcon } from '@mantine/core';
 import { Search, Plus, Minus } from 'lucide-react';
-import { demoMenuItems } from '../../utils/demoData';
+import { demoMenuItems, categories } from '../../utils/demoData';
 import { useCart } from '../../contexts/CartContext';
 import { toast, Toaster } from 'sonner';
 import { motion } from 'framer-motion';
 
 export function MenuPage() {
   const [search, setSearch] = useState('');
+  const [activeCategory, setActiveCategory] = useState('All');
   const { addToCart } = useCart();
 
-  const filteredItems = demoMenuItems.filter((item) =>
-    item.name.toLowerCase().includes(search.toLowerCase()) ||
-    item.category.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredItems = demoMenuItems.filter((item) => {
+    const matchesSearch = item.name.toLowerCase().includes(search.toLowerCase()) || item.category.toLowerCase().includes(search.toLowerCase());
+    const matchesCategory = activeCategory === 'All' || item.category === activeCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   const handleAdd = (item) => {
     addToCart(item);
@@ -32,7 +34,30 @@ export function MenuPage() {
           value={search}
           onChange={(e) => setSearch(e.currentTarget.value)}
           radius="md"
+          mb="xl"
         />
+        
+        <Group gap="sm" style={{ overflowX: 'auto', flexWrap: 'nowrap', paddingBottom: '10px' }}>
+          <Button 
+            variant={activeCategory === 'All' ? 'filled' : 'light'} 
+            color="orange" 
+            onClick={() => setActiveCategory('All')}
+            radius="xl"
+          >
+            All
+          </Button>
+          {categories.map(cat => (
+            <Button 
+              key={cat}
+              variant={activeCategory === cat ? 'filled' : 'light'} 
+              color="orange" 
+              onClick={() => setActiveCategory(cat)}
+              radius="xl"
+            >
+              {cat}
+            </Button>
+          ))}
+        </Group>
       </div>
 
       <SimpleGrid cols={{ base: 1, sm: 2, md: 3, lg: 4 }} spacing="lg">

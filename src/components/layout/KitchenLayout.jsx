@@ -15,12 +15,11 @@ import { ThemeToggle } from '../ui/ThemeToggle';
 import classes from './Layout.module.css';
 
 const kitchenLinks = [
-  { icon: LayoutDashboard, label: 'Dashboard', link: '/kitchen' },
-  { icon: ListOrdered, label: 'Live Orders', link: '/kitchen/live' },
+  { icon: LayoutDashboard, label: 'Overview', link: '/kitchen' },
+  { icon: ListOrdered, label: 'Live Orders', link: '/kitchen/orders' },
   { icon: ChefHat, label: 'Kitchen Queue', link: '/kitchen/queue' },
   { icon: Timer, label: 'Capacity Management', link: '/kitchen/capacity' },
-  { icon: MenuSquare, label: 'Menu Items', link: '/kitchen/menu' },
-  { icon: Settings, label: 'Settings', link: '/kitchen/settings' },
+  { icon: MenuSquare, label: 'Batch Preparation', link: '/kitchen/batch-prep' },
 ];
 
 export function KitchenLayout() {
