@@ -1,4 +1,7 @@
+
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+
 import { CartProvider } from './contexts/CartContext';
 import { CustomerLayout } from './components/layout/CustomerLayout';
 import { KitchenLayout } from './components/layout/KitchenLayout';
@@ -27,10 +30,17 @@ import { AdminDemandPulse } from './pages/admin/AdminDemandPulse';
 import { AdminSettings } from './pages/admin/AdminSettings';
 import { AdminStaff } from './pages/admin/AdminStaff';
 
-// Auth
+// Authentication
 import { LoginPage } from './pages/auth/LoginPage';
 
+// Supabase connection test
+import { testSupabaseConnection } from './lib/testSupabase';
+
 function App() {
+  useEffect(() => {
+    testSupabaseConnection();
+  }, []);
+
   return (
     <CartProvider>
       <BrowserRouter>
@@ -40,7 +50,10 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/menu" element={<MenuPage />} />
             <Route path="/checkout" element={<CheckoutPage />} />
-            <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
+            <Route
+              path="/order-confirmation/:orderId"
+              element={<OrderConfirmationPage />}
+            />
             <Route path="/track-order" element={<TrackOrderPage />} />
             <Route path="/my-orders" element={<MyOrdersPage />} />
           </Route>
@@ -57,7 +70,7 @@ function App() {
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<AdminOverview />} />
-            <Route path="orders" element={<KitchenQueue />} /> {/* Reusing queue UI for orders view */}
+            <Route path="orders" element={<KitchenQueue />} />
             <Route path="analytics" element={<AdminAnalytics />} />
             <Route path="menu" element={<AdminMenu />} />
             <Route path="pickup-slots" element={<AdminSlots />} />
@@ -66,12 +79,12 @@ function App() {
             <Route path="staff" element={<AdminStaff />} />
           </Route>
 
-          {/* Auth Routes */}
+          {/* Authentication Routes */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/staff/login" element={<LoginPage />} />
           <Route path="/admin/login" element={<LoginPage />} />
-          
-          {/* Catch all */}
+
+          {/* Catch-all Route */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
