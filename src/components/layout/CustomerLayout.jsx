@@ -1,7 +1,7 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { AppShell, Burger, Group, Button, Badge, UnstyledButton, Text, Drawer, Stack } from '@mantine/core';
+import { AppShell, Burger, Group, Button, Badge, UnstyledButton, Text, Drawer, Stack, Menu, ActionIcon } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { ShoppingCart, UtensilsCrossed } from 'lucide-react';
+import { ShoppingCart, UtensilsCrossed, User, Settings, ChefHat } from 'lucide-react';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import { useCart } from '../../contexts/CartContext';
 import classes from './Layout.module.css';
@@ -9,6 +9,7 @@ import classes from './Layout.module.css';
 const links = [
   { link: '/', label: 'Home' },
   { link: '/menu', label: 'Menu' },
+  { link: '/track-order', label: 'My Orders' },
   { link: '/track-order', label: 'Track Order' },
 ];
 
@@ -69,6 +70,26 @@ export function CustomerLayout() {
                 </Badge>
               )}
             </Button>
+            
+            <Menu shadow="md" width={200} position="bottom-end">
+              <Menu.Target>
+                <ActionIcon variant="light" color="gray" size="lg" radius="xl">
+                  <User size={20} />
+                </ActionIcon>
+              </Menu.Target>
+              <Menu.Dropdown>
+                <Menu.Label>Profiles</Menu.Label>
+                <Menu.Item leftSection={<User size={14} />} component={Link} to="/login?role=customer">
+                  Customer / User
+                </Menu.Item>
+                <Menu.Item leftSection={<ChefHat size={14} />} component={Link} to="/staff/login">
+                  Kitchen Staff
+                </Menu.Item>
+                <Menu.Item leftSection={<Settings size={14} />} component={Link} to="/admin/login">
+                  Admin
+                </Menu.Item>
+              </Menu.Dropdown>
+            </Menu>
           </Group>
         </Group>
       </AppShell.Header>

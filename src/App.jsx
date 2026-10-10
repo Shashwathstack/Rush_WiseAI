@@ -27,7 +27,7 @@ import { AdminSettings } from './pages/admin/AdminSettings';
 import { AdminStaff } from './pages/admin/AdminStaff';
 
 // Auth
-import { StaffLogin } from './pages/auth/StaffLogin';
+import { LoginPage } from './pages/auth/LoginPage';
 
 function App() {
   return (
@@ -65,7 +65,9 @@ function App() {
           </Route>
 
           {/* Auth Routes */}
-          <Route path="/staff/login" element={<StaffLogin />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/staff/login" element={<LoginPage />} />
+          <Route path="/admin/login" element={<LoginPage />} />
           
           {/* Catch all */}
           <Route path="*" element={<Navigate to="/" replace />} />
