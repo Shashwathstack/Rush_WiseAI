@@ -1,0 +1,25 @@
+.link {
+  display: block;
+  line-height: 1;
+  padding: 8px 12px;
+  border-radius: var(--rw-radius);
+  text-decoration: none;
+  color: var(--rw-text);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.link:hover {
+  background-color: rgba(255, 112, 67, 0.1);
+  color: var(--rw-orange);
+}
+
+.link[data-active] {
+  background-color: var(--rw-orange);
+  color: var(--rw-white);
+}
+
+.logo {
+  letter-spacing: -0.5px;
+}
