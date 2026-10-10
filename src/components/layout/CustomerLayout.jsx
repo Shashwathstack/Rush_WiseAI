@@ -9,7 +9,7 @@ import classes from './Layout.module.css';
 const links = [
   { link: '/', label: 'Home' },
   { link: '/menu', label: 'Menu' },
-  { link: '/track-order', label: 'My Orders' },
+  { link: '/my-orders', label: 'My Orders' },
   { link: '/track-order', label: 'Track Order' },
 ];
 

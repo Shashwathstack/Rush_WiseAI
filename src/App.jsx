@@ -10,6 +10,7 @@ import { MenuPage } from './pages/customer/MenuPage';
 import { CheckoutPage } from './pages/customer/CheckoutPage';
 import { OrderConfirmationPage } from './pages/customer/OrderConfirmationPage';
 import { TrackOrderPage } from './pages/customer/TrackOrderPage';
+import { MyOrdersPage } from './pages/customer/MyOrdersPage';
 
 // Kitchen Pages
 import { KitchenDashboard } from './pages/kitchen/KitchenDashboard';
@@ -41,6 +42,7 @@ function App() {
             <Route path="/checkout" element={<CheckoutPage />} />
             <Route path="/order-confirmation/:orderId" element={<OrderConfirmationPage />} />
             <Route path="/track-order" element={<TrackOrderPage />} />
+            <Route path="/my-orders" element={<MyOrdersPage />} />
           </Route>
 
           {/* Kitchen Routes */}
